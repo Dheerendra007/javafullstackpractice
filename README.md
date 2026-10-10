@@ -29,6 +29,8 @@ This repository contains practical examples, frequently asked interview question
 
 Each topic is organized into dedicated folders with practical examples, explanations, and interview-focused solutions.
 
+**Runtime requirement:** JDK 25 (LTS). Build with Maven 3.9 or later.
+
 **Purpose:** Learn, practice, revise, and build confidence for technical interviews.
 
 ---
