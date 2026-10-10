@@ -1,6 +1,6 @@
 import java.math.BigDecimal;
-
-import com.fullstackjava.db_locking.optimistic_locking;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class BankAccount {
