@@ -16,11 +16,16 @@ public class BankAccountService {
 
    @Transactional 
    public void withdraw(Long accountId, BigDecimal amount){
-     BankAccount bankaAccount = bankAccountRepository
+     BankAccount bankAccount = bankAccountRepository
      .findByIdForUpdate(accountId)
      .orElseThrow();
+     
+     if(bankAccount.getBalance().compareTo(amount)<0){
+      throw new IllegalArgumentException("Insufficient Balance");
+     }
 
-    
+     bankAccount.setBalance(bankAccount.getBalance().subtract(amount));
+    System.out.println("HEllo");
    }
 
 
