@@ -8,6 +8,16 @@ import com.fullstackjava.sql_database.db_locking.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+/**
+ * Service class responsible for managing employee operations.
+ *
+ * Demonstrates optimistic locking using JPA's @Version annotation
+ * to detect concurrent updates and prevent stale data from
+ * overwriting newer changes.
+ *
+ * Includes employee department update operations.
+ */
+
 @Service 
 @AllArgsConstructor 
 @NoArgsConstructor 
