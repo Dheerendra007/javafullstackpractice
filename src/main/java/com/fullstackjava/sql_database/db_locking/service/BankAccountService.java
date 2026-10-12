@@ -9,6 +9,14 @@ import com.fullstackjava.sql_database.db_locking.entity.BankAccount;
 import com.fullstackjava.sql_database.db_locking.repository.BankAccountRepository;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Service class responsible for managing bank account operations.
+ *
+ * Demonstrates pessimistic locking using JPA to prevent concurrent
+ * transactions from causing inconsistent account balances.
+ *
+ * Includes withdrawal validation and transaction management.
+ */
 @Service
 @RequiredArgsConstructor
 public class BankAccountService {
