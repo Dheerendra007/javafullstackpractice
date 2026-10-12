@@ -12,20 +12,24 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class BankAccountService {
+
    private final BankAccountRepository bankAccountRepository;
 
+   /*@Transactional keeps the read, validation, and update within one transaction. */
    @Transactional 
    public void withdraw(Long accountId, BigDecimal amount){
      BankAccount bankAccount = bankAccountRepository
      .findByIdForUpdate(accountId)
-     .orElseThrow();
+     .orElseThrow(() ->
+                        new RuntimeException("Account not found"));
      
-     if(bankAccount.getBalance().compareTo(amount)<0){
-      throw new IllegalArgumentException("Insufficient Balance");
+     if (bankAccount.getBalance().compareTo(amount) < 0) {
+      throw new RuntimeException("Insufficient balance");
      }
 
-     bankAccount.setBalance(bankAccount.getBalance().subtract(amount));
-    System.out.println("HEllo");
+     bankAccount.setBalance(bankAccount.getBalance()-amount);
+     bankAccountRepository.save(bankAccount);
+    
    }
 
 

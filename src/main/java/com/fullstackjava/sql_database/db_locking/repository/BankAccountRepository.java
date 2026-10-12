@@ -15,6 +15,9 @@ import jakarta.persistence.LockModeType;
 
 public interface BankAccountRepository
         extends JpaRepository<BankAccount, Long> {
+                
+/*PESSIMISTIC_WRITE typically translates to a database row lock, 
+       such as SELECT ... FOR UPDATE in PostgreSQL.*/
 
                 @Lock(LockModeType.PESSIMISTIC_WRITE)
                 @Query ("SELECT a FROM BankAccount a WHERE a.id = :id")
