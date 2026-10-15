@@ -1,12 +1,14 @@
 package com.fullstackjava.spring_boot.service;
 
+import org.springframework.stereotype.Service;
+
 @Service("EmailService")
 public class SmsService implements NotificationService{
 
     @Override
     public void sendNotification(String message) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sendNotification'");
+                     System.out.println("SMS: " + message);
+
     }
 
 }
