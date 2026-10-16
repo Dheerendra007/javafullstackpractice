@@ -12,8 +12,16 @@ public class StreamApiQuestions {
       find_1_from_list();
    }
 
+/*Reverse a string without using predefined methods. */
+/*START */
+
+/*END */
+
+
+
    /*We have a list of integers. Find out all the numbers starting with 1 using 
 stream function (11, 18, 20, 24, 85, 66, 13) */
+/*START */
  static void find_1_from_list(){
 
     List<Integer> list = List.of(11, 18, 20, 24, 85, 66, 13);
@@ -23,7 +31,7 @@ stream function (11, 18, 20, 24, 85, 66, 13) */
     .map(Integer::parseInt)//Convert String back to integer
     .collect(Collectors.toList());//Collect result into list
     System.out.println("\n Numbers starting with 1: " + result+"\n");
-    
  }
+ /*END */
 
 }
