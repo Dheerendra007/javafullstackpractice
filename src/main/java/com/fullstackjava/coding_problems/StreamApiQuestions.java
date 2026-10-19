@@ -14,6 +14,10 @@ public class StreamApiQuestions {
 
 /*Reverse a string without using predefined methods. */
 /*START */
+void reverseString(){
+   var oldStr="Dheerendra";
+   
+}
 //New Demo
 //Updated Demo
 //3rd day
