@@ -17,6 +17,7 @@ public class StreamApiQuestions {
 void reverseString(){
    var oldStr="Dheerendra";
    var newStr = "";
+   var old = "New";
 }
 //New Demo
 //Updated Demo
