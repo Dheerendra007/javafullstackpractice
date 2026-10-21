@@ -3,25 +3,31 @@ package com.fullstackjava.coding_problems;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import org.hibernate.mapping.Array;
 // (Shift + Option + F) //code alignment
 /**/
 public class StreamApiQuestions {
 
     
    public static void main(String[] args) {
-      find_1_from_list();
+     // find_1_from_list();
+      reverseString();
    }
 
 /*Reverse a string without using predefined methods. */
 /*START */
-void reverseString(){
-   var oldStr="Dheerendra";
-   var newStr = "";
-   var old = "New";
+static void reverseString(){
+   var oldStr="abcd";
+   char charArray[] = oldStr.toCharArray();
+   char charNewArray[] = oldStr.toCharArray();
+   int j=0;
+   for(int i=oldStr.length()-1;i>=0;i--){
+     charNewArray[j] = charArray[i];
+     j++;
+   }
+   System.out.println(charNewArray);
 }
-//New Demo
-//Updated Demo
-//3rd day
 /*END */
 
 
