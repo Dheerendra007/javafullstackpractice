@@ -27,6 +27,7 @@ static void reverseString(){
      j++;
    }
    System.out.println(charNewArray);
+   System.out.println(charNewArray);
 }
 /*END */
 
