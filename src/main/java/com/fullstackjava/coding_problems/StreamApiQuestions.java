@@ -1,6 +1,9 @@
 package com.fullstackjava.coding_problems;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -11,10 +14,31 @@ public class StreamApiQuestions {
 
     
    public static void main(String[] args) {
+      filterDuplicateElement();
      // find_1_from_list();
-      reverseString();
+     // reverseString();
    }
 
+
+   /* Using Java 8 Streams, how would you find the duplicate elements and
+    print each duplicate only once?*/
+
+    /*How it works
+1. numbers.stream() creates a stream from the list.
+2. seen.add(n) returns true when an element is added for the first time.
+3. !seen.add(n) returns true when the element has already appeared, so it is a duplicate.
+4. collect(Collectors.toSet()) ensures each duplicate appears only once in the result.
+5. forEach(System.out::println) prints the duplicates. */
+/*START */
+  static void filterDuplicateElement(){
+ List<Integer> numbers =
+    Arrays.asList(10, 20, 10, 30, 20, 40);
+    Set<Integer> seen = new HashSet<>();
+    numbers.stream().filter(n->!seen.add(n))
+    .collect(Collectors.toSet()).forEach(System.out::println);
+   }
+  /*END */
+  
 /*Reverse a string without using predefined methods. */
 /*START */
 static void reverseString(){
@@ -30,8 +54,6 @@ static void reverseString(){
    System.out.println(charNewArray);
 }
 /*END */
-
-
 
    /*We have a list of integers. Find out all the numbers starting with 1 using 
 stream function (11, 18, 20, 24, 85, 66, 13) */
