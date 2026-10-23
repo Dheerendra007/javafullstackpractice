@@ -1,8 +1,11 @@
 package com.fullstackjava.coding_problems;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -11,17 +14,36 @@ import org.hibernate.mapping.Array;
 // (Shift + Option + F) //code alignment
 // Duplicate Line Down	Shift + Option + ↓
 
+import com.fullstackjava.sql_database.db_locking.entity.Employee;
+
 /**/
 public class StreamApiQuestions {
 
     
    public static void main(String[] args) {
-      findSecondHighestNumberInArray();
+      findEmployeeHighestSalaryStream();
+      //findSecondHighestNumberInArray();
       //findDuplicateElementArray();
       //filterDuplicateElementList();
      // find_1_from_list();
      // reverseString();
    }
+/*Find the employee with the highest salary using Streams. */
+/*START */
+  static void findEmployeeHighestSalaryStream(){
+   List<EmployeeData> employeeList = new ArrayList<>();
+   employeeList.add(new EmployeeData("Rohan",1000));
+   employeeList.add(new EmployeeData("Rohit",5000));
+   employeeList.add(new EmployeeData("Ronak",3000));
+  
+   EmployeeData highestSal = employeeList.stream().
+   max(Comparator.comparingDouble(EmployeeData::getEmployeeSalary))
+   .orElseThrow();
+   System.out.println(highestSal.getEmployeeName());
+   System.out.println(highestSal.getEmployeeSalary());
+}
+
+  /*END */
 /*Find the second-highest number in an array.. */
 /*START */
   static void findSecondHighestNumberInArray(){
