@@ -9,17 +9,51 @@ import java.util.stream.Collectors;
 
 import org.hibernate.mapping.Array;
 // (Shift + Option + F) //code alignment
+// Duplicate Line Down	Shift + Option + ↓
+
 /**/
 public class StreamApiQuestions {
 
     
    public static void main(String[] args) {
-      filterDuplicateElement();
+      findSecondHighestNumberInArray();
+      //findDuplicateElementArray();
+      //filterDuplicateElementList();
      // find_1_from_list();
      // reverseString();
    }
+/*Find the second-highest number in an array.. */
+/*START */
+  static void findSecondHighestNumberInArray(){
+   int []arr = {1,21,12,13,14,15,16};
+   int firstHighst = Integer.MIN_VALUE;
+   int secondHighest = Integer.MIN_VALUE;
 
-
+   for (int num : arr) {
+      if(num>firstHighst){
+         secondHighest = firstHighst;
+         firstHighst = num;
+      } else if(num>secondHighest && num<firstHighst){
+         secondHighest = num;
+      }
+   }
+   System.out.println(secondHighest);
+  }
+  /*END */
+/*Find duplicate elements in an array. */
+/*START */
+  static void findDuplicateElementArray(){
+   int []number = {1,2,2,3,4,4,5,6};
+   Set<Integer> seen = new HashSet<>();
+   Set<Integer> duplicate = new HashSet<>();
+    for (Integer num : number) {
+      if(!seen.add(num)){
+         duplicate.add(num);
+      }
+    }
+    System.out.println(duplicate);
+   }
+  /*END */
    /* Using Java 8 Streams, how would you find the duplicate elements and
     print each duplicate only once?*/
 
@@ -30,7 +64,8 @@ public class StreamApiQuestions {
 4. collect(Collectors.toSet()) ensures each duplicate appears only once in the result.
 5. forEach(System.out::println) prints the duplicates. */
 /*START */
-  static void filterDuplicateElement(){
+  static void filterDuplicateElementList(){
+   int []number = {1,2,2,3,4,4,5,6};
  List<Integer> numbers =
     Arrays.asList(10, 20, 10, 30, 20, 40);
     Set<Integer> seen = new HashSet<>();
