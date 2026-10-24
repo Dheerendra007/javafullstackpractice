@@ -5,21 +5,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
-import org.hibernate.mapping.Array;
 // (Shift + Option + F) //code alignment
 // Duplicate Line Down	Shift + Option + ↓
-
-import com.fullstackjava.sql_database.db_locking.entity.Employee;
-
+// remove unused imports and declarations Option + Shift + O and Command + Shift + P
 /**/
 public class StreamApiQuestions {
 
-    
    public static void main(String[] args) {
       findEmployeeHighestSalaryStream();
       //findSecondHighestNumberInArray();
