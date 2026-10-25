@@ -2,10 +2,16 @@ package com.fullstackjava.coding_problems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 // (Shift + Option + F) //code alignment
 // Duplicate Line Down	Shift + Option + ↓
@@ -21,6 +27,21 @@ public class StreamApiQuestions {
      // find_1_from_list();
      // reverseString();
    }
+   /*two operations using Java Stream API:
+1. Count repeated words and display their frequency.
+2. Remove duplicate words and sort all unique words in alphabetical order. 
+Input : Hello my name is is Dheer and this is my name
+Output : my = 2
+name = 2
+is = 3
+Sorted unique sentence:
+and Dheer Hello is my name this*/
+/*START */
+String s = "Hello my name is is Dheer and this is my name";
+  Map<String,Long> words = Arrays.stream(s.split("//s+"))
+              .collect(Collectors.groupingBy(Function.identity(),
+              Collectors.counting()));
+  /*END */
 /*Find the employee with the highest salary using Streams. */
 /*START */
   static void findEmployeeHighestSalaryStream(){
