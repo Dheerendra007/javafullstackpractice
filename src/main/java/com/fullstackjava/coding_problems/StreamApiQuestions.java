@@ -20,7 +20,8 @@ import java.util.stream.Collectors;
 public class StreamApiQuestions {
 
    public static void main(String[] args) {
-      findEmployeeHighestSalaryStream();
+      findReateWordsAndArangeInOrder();
+      //findEmployeeHighestSalaryStream();
       //findSecondHighestNumberInArray();
       //findDuplicateElementArray();
       //filterDuplicateElementList();
@@ -37,10 +38,39 @@ is = 3
 Sorted unique sentence:
 and Dheer Hello is my name this*/
 /*START */
-String s = "Hello my name is is Dheer and this is my name";
-  Map<String,Long> words = Arrays.stream(s.split("//s+"))
-              .collect(Collectors.groupingBy(Function.identity(),
-              Collectors.counting()));
+static void findReateWordsAndArangeInOrder(){
+
+        String input = "Hello my name is is Dheer and this is my name";
+
+        // Step 1: Split sentence into words
+        String[] words = input.split("\\s+");
+
+        // Step 2: Count frequency of each word
+        Map<String, Long> frequency = Arrays.stream(words)
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()
+                ));
+
+        // Step 3: Print only repeated words
+        frequency.entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .forEach(entry ->
+                        System.out.println(
+                                entry.getKey() + " = " + entry.getValue()
+                        )
+                );
+
+        // Step 4: Remove duplicates and sort alphabetically
+        String sortedSentence = Arrays.stream(words)
+                .distinct()
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .collect(Collectors.joining(" "));
+
+        System.out.println(sortedSentence);
+    
+}
+              
   /*END */
 /*Find the employee with the highest salary using Streams. */
 /*START */
