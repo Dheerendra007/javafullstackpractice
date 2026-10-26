@@ -13,6 +13,8 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import com.fullstackjava.sql_database.db_locking.entity.Employee;
 // (Shift + Option + F) //code alignment
 // Duplicate Line Down	Shift + Option + ↓
 // remove unused imports and declarations Option + Shift + O and Command + Shift + P
@@ -20,7 +22,8 @@ import java.util.stream.Collectors;
 public class StreamApiQuestions {
 
    public static void main(String[] args) {
-      findReateWordsAndArangeInOrder();
+      findEmployeeSecondHighestSalaryStream();
+      //findReateWordsAndArangeInOrder();
       //findEmployeeHighestSalaryStream();
       //findSecondHighestNumberInArray();
       //findDuplicateElementArray();
@@ -28,6 +31,34 @@ public class StreamApiQuestions {
      // find_1_from_list();
      // reverseString();
    }
+
+   /*Find the employee with the Second highest salary using Streams. */
+/*START */
+  static void findEmployeeSecondHighestSalaryStream() {
+
+    List<EmployeeData> employees = new ArrayList<>();
+
+    employees.add(new EmployeeData("Rohan", 1000));
+    employees.add(new EmployeeData("Rohit", 5000));
+    employees.add(new EmployeeData("Rohit", 5000));
+    employees.add(new EmployeeData("Snehal", 5000));
+    employees.add(new EmployeeData("Ronak", 3000));
+
+    List<EmployeeData> result = employees.stream()
+        .map(EmployeeData::employeeSalary)
+        .distinct()
+        .sorted(Comparator.reverseOrder())
+        .skip(1)
+        .findFirst()
+        .map(salary -> employees.stream()
+            .filter(e -> e.employeeSalary() == salary)
+            .collect(Collectors.toList()))
+        .orElse(Collections.emptyList());
+
+    result.forEach(System.out::println);
+}
+
+  /*END */
    /*two operations using Java Stream API:
 1. Count repeated words and display their frequency.
 2. Remove duplicate words and sort all unique words in alphabetical order. 
