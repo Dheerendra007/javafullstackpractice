@@ -112,11 +112,11 @@ static void findReateWordsAndArangeInOrder(){
    employeeList.add(new EmployeeData("Rohit",5000));
    employeeList.add(new EmployeeData("Ronak",3000));
   
-   EmployeeData highestSal = employeeList.stream().
+   /*EmployeeData highestSal = employeeList.stream().
    max(Comparator.comparingDouble(EmployeeData::getEmployeeSalary))
    .orElseThrow();
    System.out.println(highestSal.getEmployeeName());
-   System.out.println(highestSal.getEmployeeSalary());
+   System.out.println(highestSal.getEmployeeSalary());*/
 }
 
   /*END */

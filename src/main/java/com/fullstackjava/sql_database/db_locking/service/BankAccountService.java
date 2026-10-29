@@ -35,7 +35,7 @@ public class BankAccountService {
       throw new RuntimeException("Insufficient balance");
      }
 
-     bankAccount.setBalance(bankAccount.getBalance()-amount);
+    bankAccount.setBalance(bankAccount.getBalance().subtract(amount));
      bankAccountRepository.save(bankAccount);
     
    }
