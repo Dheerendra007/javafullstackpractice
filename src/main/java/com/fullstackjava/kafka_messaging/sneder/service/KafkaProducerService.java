@@ -17,9 +17,25 @@ public class KafkaProducerService {
     
     private Logger logger = LoggerFactory.getLogger(KafkaProducerService.class);
 
-    public boolean updateLocation(String location){
-           this.kafkaTemplate.send(AppConstants.Location_TOPIC_NAME,location);
-           this.logger.info("Message Produce");
-           return true;
-    }
+public void updateLocation(String value) {
+
+    System.out.println("3. Sending message: " + value);
+
+    kafkaTemplate.send("location-update-topic", value)
+        .whenComplete((result, exception) -> {
+
+            if (exception != null) {
+                System.out.println("Kafka ERROR: " + exception.getMessage());
+            } else {
+                System.out.println("Kafka SUCCESS!");
+                System.out.println("Topic: " +
+                    result.getRecordMetadata().topic());
+                System.out.println("Offset: " +
+                    result.getRecordMetadata().offset());
+            }
+        });
+
+    System.out.println("4. Kafka send invoked");
+}
+    
 }

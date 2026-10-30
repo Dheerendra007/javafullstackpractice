@@ -23,12 +23,33 @@ public class LocationController {
     
     @Autowired 
     private KafkaProducerService kafkaProducerService;
+ 
+  @PostMapping("/update")
+public ResponseEntity<?> updateLocation() {
 
-    @PostMapping("/update")
-    public ResponseEntity<?> updateLocation(){
-        this.kafkaProducerService.updateLocation("("+Math.round(Math.random()*100)+")");
-        return new ResponseEntity<>(Map.of("message","Location updated"),HttpStatus.OK);
-    }
+  //  System.out.println("1. API called");
+for(int i=0 ;i<200000;i++){
+    kafkaProducerService.updateLocation(
+        "(" + Math.round(Math.random() * 100) + ")"+i
+    );
+}
+
+   // System.out.println("2. Kafka method completed");
+
+    return ResponseEntity.ok(
+        Map.of("message", "Location updated")
+    );
+}
+
+/*@PostMapping("/update")
+public ResponseEntity<?> updateLocation() {
+
+    System.out.println("API called");
+
+    return ResponseEntity.ok(
+        Map.of("message", "Location updated successfully")
+    );
+}*/
     
 
 }
