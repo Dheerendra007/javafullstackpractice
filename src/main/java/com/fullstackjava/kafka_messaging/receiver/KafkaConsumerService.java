@@ -13,7 +13,6 @@ public class KafkaConsumerService {
     )
     public void updateLocation(String value) {
         System.out.println("KAFKA MESSAGE RECEIVED: " + value);
-         System.out.println("KAFKA MESSAGE RECEIVED: " + value);
     }
 }
 
