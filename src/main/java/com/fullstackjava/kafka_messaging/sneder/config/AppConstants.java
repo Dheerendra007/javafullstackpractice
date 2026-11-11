@@ -5,7 +5,6 @@ public class AppConstants {
    static {
        System.out.println("AppConstants class loaded");
        System.out.println("Location_TOPIC_NAME: " + Location_TOPIC_NAME);
-       System.out.println("Location_TOPIC_NAME: " + Location_TOPIC_NAME);
    }
    
 }
