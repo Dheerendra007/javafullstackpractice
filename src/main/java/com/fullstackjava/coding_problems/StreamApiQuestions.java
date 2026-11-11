@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,7 +23,8 @@ import com.fullstackjava.sql_database.db_locking.entity.Employee;
 public class StreamApiQuestions {
 
    public static void main(String[] args) {
-      findEmployeeSecondHighestSalaryStream();
+      findFirstNonRepeatedCharacter();
+      //findEmployeeSecondHighestSalaryStream();
       //findReateWordsAndArangeInOrder();
       //findEmployeeHighestSalaryStream();
       //findSecondHighestNumberInArray();
@@ -32,7 +34,23 @@ public class StreamApiQuestions {
      // reverseString();
      //Test
    }
+/* ind the first non-repeated character in a String
+Input: "swiss"
 
+Output: w
+ */
+
+static void findFirstNonRepeatedCharacter() {
+   String input = "swiss";
+   Map<Character, Long> mMap = input.chars()
+   .mapToObj(c->(char)c)
+   .collect(Collectors.groupingBy(Collectors.counting()));
+   System.out.println(mMap);
+   Character firstNonRepeated = mMap.entrySet().stream().filter(s->s.getValue()==1).findFirst().orElse(null).getKey();
+   System.out.println(firstNonRepeated);
+}
+
+   
    /*Find the employee with the Second highest salary using Streams. */
 /*START */
   static void findEmployeeSecondHighestSalaryStream() {
