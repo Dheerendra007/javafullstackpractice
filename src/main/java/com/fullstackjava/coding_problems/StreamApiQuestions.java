@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.fullstackjava.sql_database.db_locking.entity.Employee;
 // (Shift + Option + F) //code alignment
@@ -23,7 +24,10 @@ import com.fullstackjava.sql_database.db_locking.entity.Employee;
 public class StreamApiQuestions {
 
    public static void main(String[] args) {
-      findFirstNonRepeatedCharacter();
+      findFirstRepeatedCharacter();
+      //reverseStringJava8();
+      //findduplicateCharacter();
+     // findFirstNonRepeatedCharacter();
       //findEmployeeSecondHighestSalaryStream();
       //findReateWordsAndArangeInOrder();
       //findEmployeeHighestSalaryStream();
@@ -34,7 +38,45 @@ public class StreamApiQuestions {
      // reverseString();
      //Test
    }
-/* ind the first non-repeated character in a String
+
+    /* Find the first repeated character
+Input: "programming"
+
+Output: r */
+
+static void findFirstRepeatedCharacter() {
+   String input = "programming";
+   Set<Character> set = new HashSet<>();
+   Character firstRepeated = input.chars()
+   .mapToObj(c->(char)c).filter(s->!set.add(s)).findAny().orElse(null);
+   System.out.println(firstRepeated);
+
+}
+     /* Reverse a String using Java 8*/
+
+static void reverseStringJava8() {
+   String input = "Java Developer";
+   String reversed = IntStream.range(0, input.length())
+   .mapToObj(i -> input.charAt(input.length() - 1 - i))
+   .map(String::valueOf)
+   .collect(Collectors.joining());
+   System.out.println(reversed);
+
+}
+   /* Find duplicate characters in a String
+Input: "programming"
+
+Output: r, g, m
+ */
+
+static void findduplicateCharacter() {
+   String input = "programming";
+   Map<Character, Long> mMap = input.chars()
+   .mapToObj(s->(char) s).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+   mMap.entrySet().stream().filter(s->s.getValue()>1).forEach(System.out::println);
+
+}
+/* Find the first non-repeated character in a String
 Input: "swiss"
 
 Output: w
@@ -44,7 +86,7 @@ static void findFirstNonRepeatedCharacter() {
    String input = "swiss";
    Map<Character, Long> mMap = input.chars()
    .mapToObj(c->(char)c)
-   .collect(Collectors.groupingBy(Collectors.counting()));
+   .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
    System.out.println(mMap);
    Character firstNonRepeated = mMap.entrySet().stream().filter(s->s.getValue()==1).findFirst().orElse(null).getKey();
    System.out.println(firstNonRepeated);
