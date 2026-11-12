@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collector;
@@ -24,13 +25,13 @@ import com.fullstackjava.sql_database.db_locking.entity.Employee;
 public class StreamApiQuestions {
 
    public static void main(String[] args) {
-      findFirstRepeatedCharacter();
+     // findFirstRepeatedCharacter();
       //reverseStringJava8();
       //findduplicateCharacter();
      // findFirstNonRepeatedCharacter();
       //findEmployeeSecondHighestSalaryStream();
       //findReateWordsAndArangeInOrder();
-      //findEmployeeHighestSalaryStream();
+      findEmployeeHighestSalaryStream();
       //findSecondHighestNumberInArray();
       //findDuplicateElementArray();
       //filterDuplicateElementList();
@@ -105,6 +106,7 @@ static void findFirstNonRepeatedCharacter() {
     employees.add(new EmployeeData("Snehal", 5000));
     employees.add(new EmployeeData("Ronak", 3000));
 
+    @SuppressWarnings("null")
     List<EmployeeData> result = employees.stream()
         .map(EmployeeData::employeeSalary)
         .distinct()
@@ -166,12 +168,20 @@ static void findReateWordsAndArangeInOrder(){
   /*END */
 /*Find the employee with the highest salary using Streams. */
 /*START */
-  static void findEmployeeHighestSalaryStream(){
+  @SuppressWarnings("null")
+static void findEmployeeHighestSalaryStream(){
    List<EmployeeData> employeeList = new ArrayList<>();
    employeeList.add(new EmployeeData("Rohan",1000));
    employeeList.add(new EmployeeData("Rohit",5000));
    employeeList.add(new EmployeeData("Ronak",3000));
   
+
+   Optional<EmployeeData> highestSal = employeeList.stream()
+   .max(Comparator.comparingLong(EmployeeData::employeeSalary));
+   
+System.out.println(highestSal.get().employeeName());
+System.out.println(highestSal.get().employeeSalary());
+
    /*EmployeeData highestSal = employeeList.stream().
    max(Comparator.comparingDouble(EmployeeData::getEmployeeSalary))
    .orElseThrow();
@@ -254,6 +264,7 @@ stream function (11, 18, 20, 24, 85, 66, 13) */
  static void find_1_from_list(){
 
     List<Integer> list = List.of(11, 18, 20, 24, 85, 66, 13);
+    @SuppressWarnings("null")
     List<Integer> result = list.stream().filter(n->n!=null)//Null-safe check
     .map(Object::toString)//Convert Int to string
     .filter(n->n.startsWith("1"))//Filter number that start with 1
