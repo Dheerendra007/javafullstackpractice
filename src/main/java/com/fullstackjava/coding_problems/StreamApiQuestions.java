@@ -271,7 +271,7 @@ stream function (11, 18, 20, 24, 85, 66, 13) */
     .map(Integer::parseInt)//Convert String back to integer
     .collect(Collectors.toList());//Collect result into list
     System.out.println("\n Numbers starting with 1: " + result+"\n");
-    System.out.println("\n Numbers starting with 1: " + result+"\n");
+
  }
  /*END */
 
