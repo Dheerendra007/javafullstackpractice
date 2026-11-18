@@ -246,7 +246,6 @@ System.out.println(highestSal.get().employeeSalary());
 /*START */
 static void reverseString(){
    var oldStr="abcd";
-   var oldStr1="abcd";
    char charArray[] = oldStr.toCharArray();
    char charNewArray[] = oldStr.toCharArray();
    int j=0;
