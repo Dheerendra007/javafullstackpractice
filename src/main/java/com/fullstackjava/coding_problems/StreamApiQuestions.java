@@ -103,8 +103,7 @@ static void findFirstNonRepeatedCharacter() {
     employees.add(new EmployeeData("Rohan", 1000));
     employees.add(new EmployeeData("Rohit", 5000));
     employees.add(new EmployeeData("Rohit", 5000));
-    employees.add(new EmployeeData("Snehal", 5000));
-
+    
 
     @SuppressWarnings("null")
     List<EmployeeData> result = employees.stream()
